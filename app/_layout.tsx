@@ -47,10 +47,10 @@ import {
 import Splash from "@/app/splash";
 import Splash1 from "@/app/splash1";
 import Splash2 from "@/app/splash2";
-import Splash3 from "@/app/splash3";
-import Splash4 from "@/app/splash4";
-import Splash5 from "@/app/splash5";
-import Splash6 from "@/app/splash6";
+import Splash3 from "@/app/thankyou";
+import Splash4 from "@/app/greatnews";
+import Splash5 from "@/app/financialjourney";
+import Splash6 from "@/app/kyc";
 
 // Store your Splash screens in an array
 const SplashScreens = [Splash, Splash1, Splash2,Splash6, Splash3, Splash4, Splash5];
