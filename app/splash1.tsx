@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   View,
   Text,
@@ -7,32 +7,33 @@ import {
   Dimensions,
   StyleSheet,
   Image,
-
   TouchableOpacity,
 } from "react-native";
 import LottieView from "lottie-react-native";
-import onBoard1 from "@/assets/images/onBoard1.png";
-import onBoard2 from "@/assets/images/onBoard2.png";
-import onBoard3 from "@/assets/images/onBoard3.png";
-
+import backGroundVector from "@/assets/images/Vector2.png";
 import { MaterialIcons } from "@expo/vector-icons";
+
 
 interface SplashProps {}
 
 const Splash: React.FC<SplashProps> = ({}) => {
+  const animation = useRef<LottieView>(null);
+
+
+
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.headerContainer}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={()=>{}}>
+          <TouchableOpacity onPress={() => {}}>
             <MaterialIcons name="arrow-back-ios" size={25} color="#4572D3" />
           </TouchableOpacity>
         </View>
         <Text style={styles.title}>
           <Text style={{ fontWeight: "bold" }}>No</Text> Commissions, {"\n"}
-          <Text style={{ fontWeight: "bold" }}>No</Text> Upselling,{" "}
+          <Text style={{ fontWeight: "bold" }}>No</Text> Cross-selling,{" "}
           <Text style={{ fontWeight: "bold" }}>No</Text> Ads, {"\n"}
           <Text style={{ fontWeight: "bold" }}>No</Text> Fees,{" "}
           <Text style={{ fontWeight: "bold" }}>No Bias</Text>
@@ -45,12 +46,26 @@ const Splash: React.FC<SplashProps> = ({}) => {
           Every rupee invested goes towards your goals
         </Text>
       </View>
-      <View style={styles.content}>
-
-        <View style={styles.content}>
-          <Image source={onBoard2} />
-        </View>
+      <View style={styles.background}>
+        <Image source={backGroundVector} />
       </View>
+
+      <View style={styles.content}>
+        {/* <Image source={onBoard2} /> */}
+
+  
+
+        <LottieView
+          autoPlay
+          ref={animation}
+          style={{
+            width: 500,
+            height: 500,
+          }}
+          source={require("@/assets/images/onBoard2.json")}
+        />
+      </View>
+
       <View style={styles.footer}>
         <TouchableOpacity style={styles.signUp}>
           <Text style={styles.signUpButton}>Sign up</Text>
@@ -111,13 +126,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 15,
   },
-  content: {
+  background: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: 70,
-    width: "100%"
+    bottom: 250,
+    width: "100%",
+  },
+  content: {
+    flex: 2,
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 60,
+    width: "100%",
   },
   footer: {
     height: 50,

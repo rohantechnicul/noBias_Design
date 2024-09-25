@@ -10,11 +10,13 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import ConfettiCannon from "react-native-confetti-cannon";
 import { useFocusEffect } from "@react-navigation/native";
+import LottieView from "lottie-react-native";
 
 interface SplashProps {}
 
 const Splash: React.FC<SplashProps> = () => {
   const explosion = useRef<ConfettiCannon | null>(null);
+  const animation = useRef<LottieView>(null);
 
   const startConfetti = () => {
     if (explosion.current) {
@@ -32,14 +34,15 @@ const Splash: React.FC<SplashProps> = () => {
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
 
-      <ConfettiCannon
+  <View style={styles.Confetti}>
+  <ConfettiCannon
         count={200}
         origin={{ x: -10, y: 0 }}
         autoStart={false}
         ref={explosion}
         fadeOut={true}
       />
-
+  </View>
       <View style={styles.header}>
         <TouchableOpacity onPress={()=>{}}>
           <MaterialIcons name="arrow-back-ios" size={25} color="#4572D3" />
@@ -47,6 +50,17 @@ const Splash: React.FC<SplashProps> = () => {
       </View>
 
       <View style={styles.overlayContainer}>
+      <View style={styles.content}>
+        <LottieView
+          autoPlay
+          ref={animation}
+          style={{
+            width: 200,
+            height: 200,
+          }}
+          source={require("@/assets/images/ThankYou.json")}
+        />
+      </View>
         <Text style={styles.title}>
           <Text style={{ fontWeight: "bold" }}>Thank You! 🎉</Text>
         </Text>
@@ -63,7 +77,7 @@ const Splash: React.FC<SplashProps> = () => {
         <TouchableOpacity style={styles.button} onPress={startConfetti}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
-      </View>
+      </View> 
     </View>
   );
 };
@@ -85,6 +99,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 15,
+  },
+  Confetti:{
+    height: "100%",
+    width: "100%",
+    zIndex: 2,
+  },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
   },
   overlayContainer: {
     position: "absolute",

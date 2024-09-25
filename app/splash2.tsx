@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import onBoard3 from "@/assets/images/onBoard3.png";
 import { MaterialIcons } from "@expo/vector-icons";
+import LottieView from "lottie-react-native";
 
 interface SplashProps {}
 
@@ -39,6 +40,7 @@ const Splash: React.FC<SplashProps> = ({}) => {
       </View>
       <View style={styles.content}>
         <Image source={onBoard3} />
+   
       </View>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.signUp}>

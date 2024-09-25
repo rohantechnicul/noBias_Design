@@ -12,18 +12,24 @@ import {
 import onBoard1 from "@/assets/images/onBoard1.png";
 import { MaterialIcons } from "@expo/vector-icons";
 
+
+
 interface SplashProps {}
 
 const Splash: React.FC<SplashProps> = ({}) => {
+
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      <View style={styles.headerContainer}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={()=>{}}>
+      <View style={styles.header}>
+          <TouchableOpacity onPress={() => {}}>
             <MaterialIcons name="arrow-back-ios" size={25} color="#4572D3" />
           </TouchableOpacity>
         </View>
+
+      <View style={styles.headerContainer}>
+
         <Text style={styles.title}>
           A <Text style={{ fontWeight: "bold" }}>realistic</Text> way to {"\n"}
           achieve your goals
@@ -58,9 +64,9 @@ const styles = StyleSheet.create({
   headerContainer: {
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
-    top: "6%",
+    position: 'absolute',
     width: "100%",
+    top: '18%',
     zIndex: 2,
   },
   title: {
@@ -98,6 +104,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 15,
+    top: "6%",
+    position: 'absolute',
+    zIndex: 2,
   },
   content: {
     flex: 1,

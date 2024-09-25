@@ -43,6 +43,7 @@ import {
   Dimensions,
   StyleSheet,
   FlatList,
+  Text
 } from "react-native";
 import Splash from "@/app/splash";
 import Splash1 from "@/app/splash1";
@@ -51,14 +52,19 @@ import Splash3 from "@/app/thankyou";
 import Splash4 from "@/app/greatnews";
 import Splash5 from "@/app/financialjourney";
 import Splash6 from "@/app/kyc";
+import carousel from "./carousel";
+import PagerView from 'react-native-pager-view';
+
 
 // Store your Splash screens in an array
 const SplashScreens = [Splash, Splash1, Splash2,Splash6, Splash3, Splash4, Splash5];
 
 export default function HomeScreen() {
   return (
+
     <View style={{ backgroundColor: "white" }}>
       <StatusBar barStyle="light-content" />
+      
       <FlatList
         data={SplashScreens}
         renderItem={({ item: SplashComponent }) => (
@@ -76,8 +82,18 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  page: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   screenContainer: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
+  },
+  pagerView: {
+    flex: 1,
   },
 });
