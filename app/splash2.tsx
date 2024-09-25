@@ -7,28 +7,31 @@ import {
   Dimensions,
   StyleSheet,
   Image,
-
   TouchableOpacity,
 } from "react-native";
 import onBoard3 from "@/assets/images/onBoard3.png";
 import { MaterialIcons } from "@expo/vector-icons";
-import LottieView from "lottie-react-native";
+
+const { width, height } = Dimensions.get("window");
 
 interface SplashProps {}
 
 const Splash: React.FC<SplashProps> = ({}) => {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar
+        barStyle={Platform.OS === "ios" ? "dark-content" : "light-content"}
+        backgroundColor="#4572D3"
+      />
       <View style={styles.headerContainer}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={()=>{}}>
+          <TouchableOpacity onPress={() => {}}>
             <MaterialIcons name="arrow-back-ios" size={25} color="#4572D3" />
           </TouchableOpacity>
         </View>
         <Text style={styles.title}>
-          Learn how to invest,{"\n"}
-          not how to<Text style={{ fontWeight: "bold" }}> juggle</Text>
+          Learn how to invest,{"\n"}not how to
+          <Text style={{ fontWeight: "bold" }}> juggle</Text>
         </Text>
         <Text style={styles.subTitle}>
           No need to juggle expense tracking, planning, and investing
@@ -39,15 +42,18 @@ const Splash: React.FC<SplashProps> = ({}) => {
         </Text>
       </View>
       <View style={styles.content}>
-        <Image source={onBoard3} />
-   
+        <Image
+          source={onBoard3}
+          style={styles.image}
+          resizeMode="contain"
+        />
       </View>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.signUp}>
           <Text style={styles.signUpButton}>Sign up</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.Login}>
-          <Text style={styles.LoginButton}>Login</Text>
+        <TouchableOpacity style={styles.login}>
+          <Text style={styles.loginButton}>Login</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -59,67 +65,59 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: "5%",
   },
   headerContainer: {
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
-    top: "6%",
+    marginTop: height * 0.05,
     width: "100%",
-    zIndex: 2,
   },
   title: {
     fontFamily: "Inter",
-    fontWeight: 400,
-    fontSize: 28,
-    width: "100%",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    fontSize: width * 0.07, // Scales with screen width
+    textAlign: "center",
+    paddingVertical: height * 0.02,
   },
   subTitle: {
     fontFamily: "Inter",
-    fontWeight: 400,
-    fontSize: 16,
-    width: "100%",
-    paddingHorizontal: 20,
-    paddingVertical: 5,
+    fontSize: width * 0.045, // Scales with screen width
+    textAlign: "center",
     color: "#8E8E93",
+    paddingVertical: height * 0.01,
   },
-
   subTitle2: {
     fontFamily: "Inter",
-    fontWeight: 400,
-    fontSize: 12,
-    width: "100%",
-    paddingHorizontal: 20,
-    paddingVertical: 5,
+    fontSize: width * 0.035, // Scales with screen width
+    textAlign: "center",
     color: "#8E8E93",
+    paddingVertical: height * 0.01,
   },
   header: {
-    marginTop: "10%",
-    marginBottom: 20,
-    width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 15,
+    justifyContent: "flex-start",
+    width: "100%",
+    paddingHorizontal: "5%",
   },
   content: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
-    bottom: 130,
-    zIndex: 1,
+    width: "100%",
+    marginBottom: height * 0.15, // Responsive margin from bottom
+  },
+  image: {
+    width: "80%",
+    height: height * 0.4, // Adjust image height relative to screen height
   },
   footer: {
-    height: 50,
-    width: "100%",
+    flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingBottom: 100,
-    flexDirection: "row",
-    position: "absolute",
-    bottom: 0,
+    width: "100%",
+    paddingHorizontal: "5%",
+    marginBottom: height * 0.05,
   },
   signUp: {
     backgroundColor: "#ffffff",
@@ -127,34 +125,27 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     width: "45%",
-    height: 40,
+    height: height * 0.06, // Scales button height with screen height
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 10,
-    marginRight: 10,
   },
-
-  Login: {
+  login: {
     backgroundColor: "#4572D3",
     borderRadius: 15,
     width: "45%",
-    height: 40,
+    height: height * 0.06,
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 10,
-    marginRight: 10,
   },
   signUpButton: {
-    fontWeight: 500,
+    fontWeight: "500",
     color: "#4572D3",
-    textAlign: "center",
-    fontSize: 16,
+    fontSize: width * 0.04, // Scales button text size with screen width
   },
-  LoginButton: {
-    fontWeight: 500,
+  loginButton: {
+    fontWeight: "500",
     color: "#FFFFFF",
-    textAlign: "center",
-    fontSize: 16,
+    fontSize: width * 0.04,
   },
 });
 

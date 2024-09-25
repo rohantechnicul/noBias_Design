@@ -14,7 +14,7 @@ import LottieView from "lottie-react-native";
 
 interface SplashProps {}
 
-const Splash: React.FC<SplashProps> = () => {
+const Thankyou: React.FC<SplashProps> = () => {
   const explosion = useRef<ConfettiCannon | null>(null);
   const animation = useRef<LottieView>(null);
 
@@ -161,4 +161,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Splash;
+export default Thankyou;

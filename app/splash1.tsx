@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StatusBar,
-  Platform,
   Dimensions,
   StyleSheet,
   Image,
@@ -13,14 +12,12 @@ import LottieView from "lottie-react-native";
 import backGroundVector from "@/assets/images/Vector2.png";
 import { MaterialIcons } from "@expo/vector-icons";
 
+const { width, height } = Dimensions.get("window"); // Get device dimensions
 
 interface SplashProps {}
 
 const Splash: React.FC<SplashProps> = ({}) => {
   const animation = useRef<LottieView>(null);
-
-
-
 
   return (
     <View style={styles.container}>
@@ -32,36 +29,29 @@ const Splash: React.FC<SplashProps> = ({}) => {
           </TouchableOpacity>
         </View>
         <Text style={styles.title}>
-          <Text style={{ fontWeight: "bold" }}>No</Text> Commissions, {"\n"}
-          <Text style={{ fontWeight: "bold" }}>No</Text> Cross-selling,{" "}
-          <Text style={{ fontWeight: "bold" }}>No</Text> Ads, {"\n"}
-          <Text style={{ fontWeight: "bold" }}>No</Text> Fees,{" "}
-          <Text style={{ fontWeight: "bold" }}>No Bias</Text>
+          <Text style={styles.boldText}>No</Text> Commissions, {"\n"}
+          <Text style={styles.boldText}>No</Text> Cross-selling,{" "}
+          <Text style={styles.boldText}>No</Text> Ads, {"\n"}
+          <Text style={styles.boldText}>No</Text> Fees,{" "}
+          <Text style={styles.boldText}>No Bias</Text>
         </Text>
         <Text style={styles.subTitle}>
-          No Fees. Period. Your subscription is paid by your employer. They
-          care!
+          No Fees. Period. Your subscription is paid by your employer. They care!
         </Text>
         <Text style={styles.subTitle2}>
           Every rupee invested goes towards your goals
         </Text>
       </View>
+
       <View style={styles.background}>
-        <Image source={backGroundVector} />
+        <Image source={backGroundVector} style={styles.backgroundImage} />
       </View>
 
       <View style={styles.content}>
-        {/* <Image source={onBoard2} /> */}
-
-  
-
         <LottieView
           autoPlay
           ref={animation}
-          style={{
-            width: 500,
-            height: 500,
-          }}
+          style={styles.lottie}
           source={require("@/assets/images/onBoard2.json")}
         />
       </View>
@@ -70,8 +60,8 @@ const Splash: React.FC<SplashProps> = ({}) => {
         <TouchableOpacity style={styles.signUp}>
           <Text style={styles.signUpButton}>Sign up</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.Login}>
-          <Text style={styles.LoginButton}>Login</Text>
+        <TouchableOpacity style={styles.login}>
+          <Text style={styles.loginButton}>Login</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -83,43 +73,48 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#fff",
   },
   headerContainer: {
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    top: "6%",
+    top: height * 0.06, // Adjusted for different screen sizes
     width: "100%",
   },
   title: {
     fontFamily: "Inter",
-    fontWeight: 400,
-    fontSize: 28,
+    fontWeight: "400",
+    fontSize: width * 0.07, // Responsive font size
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 10,
+    textAlign: "center",
+  },
+  boldText: {
+    fontWeight: "bold",
   },
   subTitle: {
     fontFamily: "Inter",
-    fontWeight: 400,
-    fontSize: 16,
+    fontWeight: "400",
+    fontSize: width * 0.045, // Responsive font size
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 5,
     color: "#8E8E93",
+    textAlign: "center",
   },
-
   subTitle2: {
     fontFamily: "Inter",
-    fontWeight: 400,
-    fontSize: 12,
+    fontWeight: "400",
+    fontSize: width * 0.035, // Responsive font size
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 5,
     color: "#8E8E93",
+    textAlign: "center",
   },
   header: {
-    marginTop: "10%",
     marginBottom: 20,
     width: "100%",
     flexDirection: "row",
@@ -131,23 +126,32 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: 250,
+    bottom: height * 0.35, // Adjust positioning based on screen size
     width: "100%",
+  },
+  backgroundImage: {
+    width: width * 0.9, // Adjust background image size dynamically
+    height: height * 0.25,
+    resizeMode: "contain",
   },
   content: {
     flex: 2,
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: 60,
+    bottom: height * 0.08, // Adjust positioning based on screen size
     width: "100%",
+  },
+  lottie: {
+    width: width * 0.8, // Scale the animation responsively
+    height: height * 0.4,
   },
   footer: {
     height: 50,
     width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingBottom: 100,
+    paddingBottom: height * 0.1, // Dynamic padding for responsiveness
     flexDirection: "row",
     position: "absolute",
     bottom: 0,
@@ -161,31 +165,28 @@ const styles = StyleSheet.create({
     height: 40,
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 10,
-    marginRight: 10,
+    marginHorizontal: 10,
   },
-
-  Login: {
+  login: {
     backgroundColor: "#4572D3",
     borderRadius: 15,
     width: "45%",
     height: 40,
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 10,
-    marginRight: 10,
+    marginHorizontal: 10,
   },
   signUpButton: {
-    fontWeight: 500,
+    fontWeight: "500",
     color: "#4572D3",
     textAlign: "center",
-    fontSize: 16,
+    fontSize: width * 0.045, // Responsive font size
   },
-  LoginButton: {
-    fontWeight: 500,
+  loginButton: {
+    fontWeight: "500",
     color: "#FFFFFF",
     textAlign: "center",
-    fontSize: 16,
+    fontSize: width * 0.045, // Responsive font size
   },
 });
 

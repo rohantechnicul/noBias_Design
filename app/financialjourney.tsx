@@ -3,32 +3,31 @@ import {
   View,
   Text,
   StatusBar,
-  Platform,
   Dimensions,
   StyleSheet,
   Image,
-  Pressable,
   TouchableOpacity,
 } from "react-native";
 import onBoard5 from "@/assets/images/onboard5.png";
 import { MaterialIcons } from "@expo/vector-icons";
 
+const { width, height } = Dimensions.get("window"); 
+
 interface SplashProps {}
 
-const Splash: React.FC<SplashProps> = ({}) => {
+const financialJourney: React.FC<SplashProps> = ({}) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
-
       <View style={styles.headerContainer}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={()=>{}}>
+          <TouchableOpacity onPress={() => {}}>
             <MaterialIcons name="arrow-back-ios" size={25} color="#4572D3" />
           </TouchableOpacity>
         </View>
         <Text style={styles.title}>
           Important Step for Your{"\n"}
-          <Text style={{ fontWeight: "bold" }}>Financial Journey</Text>
+          <Text style={styles.boldText}>Financial Journey</Text>
         </Text>
         <Text style={styles.subTitle}>
           This SEBI mandated step helps us understand your willingness and
@@ -37,7 +36,7 @@ const Splash: React.FC<SplashProps> = ({}) => {
         </Text>
       </View>
       <View style={styles.content}>
-        <Image source={onBoard5} />
+        <Image source={onBoard5} style={styles.image} />
       </View>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.button}>
@@ -53,62 +52,72 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#fff",
   },
 
   headerContainer: {
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    top: "6%",
+    top: height * 0.06, 
     width: "100%",
   },
 
   title: {
-    fontWeight: 400,
-    fontSize: 28,
+    fontWeight: "400",
+    fontSize: width * 0.07, 
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 10,
-  },
-  subTitle: {
-    fontWeight: 400,
-    fontSize: 16,
-    width: "100%",
-    paddingHorizontal: 20,
-    paddingVertical: 5,
+    textAlign: "center",
   },
 
-  subTitle2: {
-    fontWeight: 400,
-    fontSize: 18,
+  boldText: {
+    fontWeight: "bold",
+  },
+
+  subTitle: {
+    fontWeight: "400",
+    fontSize: width * 0.045, 
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 5,
+    textAlign: "center",
   },
+
   header: {
-    marginTop: "10%",
+    marginTop: height * 0.05, 
     marginBottom: 20,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 15,
   },
+
   content: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: 200,
+    bottom: height * 0.25,
   },
+
+  image: {
+    width: width * 0.7, 
+    height: height * 0.35,
+    resizeMode: "contain",
+  },
+
   footer: {
     height: 50,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 100,
+    paddingBottom: height * 0.1,
     position: "absolute",
     bottom: 0,
   },
+
   button: {
     backgroundColor: "#4572D3",
     borderRadius: 15,
@@ -117,11 +126,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
   buttonText: {
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
+    fontSize: width * 0.045,
   },
 });
 
-export default Splash;
+export default financialJourney;

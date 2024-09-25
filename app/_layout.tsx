@@ -1,41 +1,3 @@
-// import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-// import { useFonts } from 'expo-font';
-// import { Stack } from 'expo-router';
-// import * as SplashScreen from 'expo-splash-screen';
-// import { useEffect } from 'react';
-// import 'react-native-reanimated';
-
-// import { useColorScheme } from '@/hooks/useColorScheme';
-
-// // Prevent the splash screen from auto-hiding before asset loading is complete.
-// SplashScreen.preventAutoHideAsync();
-
-// export default function RootLayout() {
-//   const colorScheme = useColorScheme();
-//   const [loaded] = useFonts({
-//     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-//   });
-
-//   useEffect(() => {
-//     if (loaded) {
-//       SplashScreen.hideAsync();
-//     }
-//   }, [loaded]);
-
-//   if (!loaded) {
-//     return null;
-//   }
-
-//   return (
-//     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-//       <Stack>
-//         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-//         <Stack.Screen name="+not-found" />
-//       </Stack>
-//     </ThemeProvider>
-//   );
-// }
-
 import React from "react";
 import {
   View,
@@ -52,18 +14,16 @@ import Splash3 from "@/app/thankyou";
 import Splash4 from "@/app/greatnews";
 import Splash5 from "@/app/financialjourney";
 import Splash6 from "@/app/kyc";
-import carousel from "./carousel";
-import PagerView from 'react-native-pager-view';
 
 
-// Store your Splash screens in an array
-const SplashScreens = [Splash, Splash1, Splash2,Splash6, Splash3, Splash4, Splash5];
+const SplashScreens = [Splash, Splash1, Splash2, Splash6, Splash3, Splash4, Splash5];
+
+const { width, height } = Dimensions.get("window");
 
 export default function HomeScreen() {
   return (
-
-    <View style={{ backgroundColor: "white" }}>
-      <StatusBar barStyle="light-content" />
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" />
       
       <FlatList
         data={SplashScreens}
@@ -76,6 +36,8 @@ export default function HomeScreen() {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
+        snapToAlignment="center"
+        decelerationRate="fast"
       />
     </View>
   );
@@ -84,16 +46,18 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
+  },
+  screenContainer: {
+    width,
+    height,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   page: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  screenContainer: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
-  pagerView: {
-    flex: 1,
+    width: '100%',
+    height: '100%',
   },
 });
