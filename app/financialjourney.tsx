@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   },
 
   headerContainer: {
+    flex: 2,
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
@@ -65,11 +66,11 @@ const styles = StyleSheet.create({
 
   title: {
     fontWeight: "400",
-    fontSize: width * 0.07, 
+    fontSize: 28, 
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 10,
-    textAlign: "center",
+    textAlign: "left",
   },
 
   boldText: {
@@ -78,11 +79,11 @@ const styles = StyleSheet.create({
 
   subTitle: {
     fontWeight: "400",
-    fontSize: width * 0.045, 
+    fontSize: 16, 
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 5,
-    textAlign: "center",
+    textAlign: "left",
   },
 
   header: {
@@ -99,13 +100,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: height * 0.25,
+    bottom: height * 0.20,
   },
 
   image: {
-    width: width * 0.7, 
-    height: height * 0.35,
-    resizeMode: "contain",
+    flex:1,
+    width: width, 
+    height: height * 0.55,
+
   },
 
   footer: {

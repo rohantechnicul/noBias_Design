@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import {
   View,
   Text,
@@ -9,26 +9,20 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import onBoard3 from "@/assets/images/onBoard3.png";
-import { MaterialIcons } from "@expo/vector-icons";
+import LottieView from "lottie-react-native";
+import backGroundVector from "@/assets/images/Vector3.png";
+
 
 const { width, height } = Dimensions.get("window");
 
 interface SplashProps {}
 
 const Splash: React.FC<SplashProps> = ({}) => {
+  const animation = useRef<LottieView>(null);
   return (
     <View style={styles.container}>
-      <StatusBar
-        barStyle={Platform.OS === "ios" ? "dark-content" : "light-content"}
-        backgroundColor="#4572D3"
-      />
       <View style={styles.headerContainer}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => {}}>
-            <MaterialIcons name="arrow-back-ios" size={25} color="#4572D3" />
-          </TouchableOpacity>
-        </View>
+
         <Text style={styles.title}>
           Learn how to invest,{"\n"}not how to
           <Text style={{ fontWeight: "bold" }}> juggle</Text>
@@ -41,21 +35,18 @@ const Splash: React.FC<SplashProps> = ({}) => {
           We make it simple so you can take it easy
         </Text>
       </View>
+      <View style={styles.background}>
+        <Image source={backGroundVector} style={styles.backgroundImage} />
+      </View>
       <View style={styles.content}>
-        <Image
-          source={onBoard3}
-          style={styles.image}
-          resizeMode="contain"
+      <LottieView
+          autoPlay
+          ref={animation}
+          style={styles.lottie}
+          source={require("@/assets/images/onBoard3.json")}
         />
       </View>
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.signUp}>
-          <Text style={styles.signUpButton}>Sign up</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.login}>
-          <Text style={styles.loginButton}>Login</Text>
-        </TouchableOpacity>
-      </View>
+
     </View>
   );
 };
@@ -65,87 +56,80 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: "5%",
   },
   headerContainer: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: height * 0.05,
+    position: "absolute",
     width: "100%",
+    top: height * 0.18,
+    zIndex: 2,
   },
   title: {
     fontFamily: "Inter",
-    fontSize: width * 0.07, // Scales with screen width
-    textAlign: "center",
-    paddingVertical: height * 0.02,
+    fontWeight: "400",
+    fontSize: 28,
+    width: "100%",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    textAlign: "left",
   },
   subTitle: {
     fontFamily: "Inter",
-    fontSize: width * 0.045, // Scales with screen width
-    textAlign: "center",
+    fontWeight: "400",
+    fontSize: 16,
+    width: "100%",
+    paddingHorizontal: 20,
+    paddingVertical: 5,
     color: "#8E8E93",
-    paddingVertical: height * 0.01,
+    textAlign: "left",
   },
   subTitle2: {
     fontFamily: "Inter",
-    fontSize: width * 0.035, // Scales with screen width
-    textAlign: "center",
+    fontWeight: "400",
+    fontSize: 12, // Responsive font size
+    width: "100%",
+    paddingHorizontal: 20,
+    paddingVertical: 5,
     color: "#8E8E93",
-    paddingVertical: height * 0.01,
+    textAlign: "left",
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
     width: "100%",
-    paddingHorizontal: "5%",
+
+  },
+  background: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    bottom: height * 0.44,
+    width: "100%",
+  },
+  backgroundImage: {
+    width: "100%",
+    height: height * 0.30,
+   
   },
   content: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    marginBottom: height * 0.15, // Responsive margin from bottom
+    position: "absolute",
+    bottom: height * 0.14,
   },
   image: {
     width: "80%",
     height: height * 0.4, // Adjust image height relative to screen height
   },
-  footer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    paddingHorizontal: "5%",
-    marginBottom: height * 0.05,
-  },
-  signUp: {
-    backgroundColor: "#ffffff",
-    borderColor: "#4572D3",
-    borderWidth: 1,
-    borderRadius: 15,
-    width: "45%",
-    height: height * 0.06, // Scales button height with screen height
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  login: {
-    backgroundColor: "#4572D3",
-    borderRadius: 15,
-    width: "45%",
-    height: height * 0.06,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  signUpButton: {
-    fontWeight: "500",
-    color: "#4572D3",
-    fontSize: width * 0.04, // Scales button text size with screen width
-  },
-  loginButton: {
-    fontWeight: "500",
-    color: "#FFFFFF",
-    fontSize: width * 0.04,
+  lottie: {
+    width: 400,
+    height: 400,
   },
 });
 

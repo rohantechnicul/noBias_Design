@@ -12,7 +12,7 @@ import onBoard4 from "@/assets/images/onBoard4.png";
 import tick from "@/assets/images/tick.png";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const { width, height } = Dimensions.get("window"); // Get device dimensions
+const { width, height } = Dimensions.get("window"); 
 
 interface SplashProps {}
 
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    top: height * 0.06, // Responsive position
+    top: height * 0.06,
     width: "100%",
   },
   headerRow: {
@@ -82,19 +82,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   tickIcon: {
-    height: width * 0.08, // Dynamic size
+    height: width * 0.08,
     width: width * 0.08,
     borderRadius: width * 0.04,
   },
   title: {
     fontWeight: "700",
-    fontSize: width * 0.075, // Dynamic font size
+    fontSize: 28,
     paddingHorizontal: 20,
     paddingVertical: 14,
   },
   subTitle: {
     fontWeight: "400",
-    fontSize: width * 0.045, // Dynamic font size
+    fontSize:16,
     paddingHorizontal: 20,
     paddingVertical: 5,
     flexWrap: "wrap",
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   header: {
-    marginTop: height * 0.05, // Adjust based on screen height
+    marginTop: height * 0.05,
     marginBottom: 20,
     width: "100%",
     flexDirection: "row",
@@ -121,19 +121,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: height * 0.25, // Adjust based on screen height
+    bottom: height * 0.25,
   },
   onboardImage: {
-    width: width * 0.7, // Adjust image size dynamically
+    width: width,
     height: height * 0.35,
-    resizeMode: "contain",
+
   },
   footer: {
     height: 50,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: height * 0.1, // Responsive padding
+    paddingBottom: height * 0.1,
     position: "absolute",
     bottom: 0,
   },
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
-    fontSize: width * 0.045, // Dynamic font size
+    fontSize: width * 0.045,
   },
 });
 

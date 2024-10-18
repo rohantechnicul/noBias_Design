@@ -18,7 +18,7 @@ interface SplashProps {}
 const Kyc: React.FC<SplashProps> = ({}) => {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="dark-content"/>
       <View style={styles.headerContainer}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => {}}>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "400",
-    fontSize: width * 0.075, // Dynamic font size
+    fontSize: 28, // Dynamic font size
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontWeight: "400",
-    fontSize: width * 0.045, // Dynamic font size
+    fontSize: 16, // Dynamic font size
     width: "100%",
     paddingHorizontal: 20,
     paddingVertical: 5,
@@ -91,12 +91,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: height * 0.25, // Responsive positioning
+    bottom: height * 0.21, // Responsive positioning
   },
   onboardImage: {
-    width: width * 0.7, // Adjusted size for better responsiveness
+    width: width, // Adjusted size for better responsiveness
     height: height * 0.35,
-    resizeMode: "contain",
+  
   },
   footer: {
     height: 50,

@@ -1,0 +1,107 @@
+{
+    "imf_multiplier": 22.4,
+    "age": [
+        {
+            "label": "Average",
+            "score": 54
+        },
+        {
+            "label": "18-24 year olds",
+            "score": 51
+        },
+        {
+            "label": "25-34 year olds",
+            "score": 58
+        },
+        {
+            "label": "35-44 year olds",
+            "score": 52
+        },
+        {
+            "label": "45-54 year olds",
+            "score": 59
+        },
+        {
+            "label": "55-64 year olds",
+            "score": 40
+        },
+        {
+            "label": "65-74 year olds",
+            "score": 60
+        },
+        {
+            "label": "+75 year olds",
+            "score": 60
+        }
+    ],
+    "householdIncome": [
+        {
+            "label": "Average",
+            "score": 54
+        },
+        {
+            "lesser_Amount": 0,
+            "Greater_Amount": 20000,
+            "score": 51
+        },
+        {
+            "lesser_Amount": 20000,
+            "Greater_Amount": 29999,
+            "score": 52
+        },
+        {
+            "lesser_Amount": 30000,
+            "Greater_Amount": 49999,
+            "score": 54
+        },
+        {
+            "lesser_Amount": 50000,
+            "Greater_Amount": 74999,
+            "score": 55
+        },
+        {
+            "lesser_Amount": 75000,
+            "Greater_Amount": 99999,
+            "score": 61
+        },
+        {
+            "lesser_Amount": 100000,
+            "Greater_Amount": 0,
+            "score": 60
+        }
+    ],
+    "employment": [
+        {
+            "label": "Average",
+            "score": 54
+        },
+        {
+            "label": "Self-employed",
+            "score": 51
+        },
+        {
+            "label": "Full-time",
+            "score": 51
+        },
+        {
+            "label": "Home maker",
+            "score": 52
+        },
+        {
+            "label": "Student",
+            "score": 54
+        },
+        {
+            "label": "Sick or disabled",
+            "score": 55
+        },
+        {
+            "label": "Unemployed",
+            "score": 61
+        },
+        {
+            "label": "Retired",
+            "score": 60
+        }
+    ]
+}

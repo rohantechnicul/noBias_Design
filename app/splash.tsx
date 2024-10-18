@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import {
   View,
   Text,
@@ -8,22 +8,17 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import onBoard1 from "@/assets/images/onBoard1.png";
-import { MaterialIcons } from "@expo/vector-icons";
+import LottieView from "lottie-react-native";
+import backGroundVector from "@/assets/images/Vector1.png";
 
 const { width, height } = Dimensions.get("window"); 
 
 interface SplashProps {}
 
 const Splash: React.FC<SplashProps> = ({}) => {
+  const animation = useRef<LottieView>(null);
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => {}}>
-          <MaterialIcons name="arrow-back-ios" size={width * 0.065} color="#4572D3" />
-        </TouchableOpacity>
-      </View>
 
       <View style={styles.headerContainer}>
         <Text style={styles.title}>
@@ -35,16 +30,17 @@ const Splash: React.FC<SplashProps> = ({}) => {
         </Text>
         <Text style={styles.subTitle2}>No get-rich-quick schemes (sorry)</Text>
       </View>
-      <View style={styles.content}>
-        <Image source={onBoard1} style={styles.image} />
+      <View style={styles.background}>
+        <Image source={backGroundVector} style={styles.backgroundImage} />
       </View>
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.signUp}>
-          <Text style={styles.signUpButton}>Sign up</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.login}>
-          <Text style={styles.loginButton}>Login</Text>
-        </TouchableOpacity>
+
+      <View style={styles.content}>
+        <LottieView
+          autoPlay
+          ref={animation}
+          style={styles.lottie}
+          source={require("@/assets/images/onBoard1.json")}
+        />
       </View>
     </View>
   );
@@ -55,7 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+
   },
   headerContainer: {
     justifyContent: "center",
@@ -106,59 +102,38 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   content: {
-    flex: 1,
+    flex: 2,
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: height * 0.2,
-    zIndex: 1,
+    bottom: height * 0.14,
+    width: "100%",
+
   },
   image: {
-    width: width * 0.7,
-    height: height * 0.35,
-    resizeMode: "contain",
-  },
-  footer: {
-    height: 50,
     width: "100%",
-    justifyContent: "space-between",
+    height: height * 0.35,
+    objectFit: "cover",
+ 
+  },
+  lottie: {
+    width: 400,
+    height: 400,
+  },
+  background: {
+    flex: 2,
+    justifyContent: "center",
     alignItems: "center",
-    paddingBottom: height * 0.1,
-    flexDirection: "row",
     position: "absolute",
-    bottom: 0,
+    bottom: height * 0.286,
+    width: "100%",
+    height: "auto",
+
   },
-  signUp: {
-    backgroundColor: "#ffffff",
-    borderColor: "#4572D3",
-    borderWidth: 1,
-    borderRadius: 15,
-    width: "45%",
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 10,
-  },
-  login: {
-    backgroundColor: "#4572D3",
-    borderRadius: 15,
-    width: "45%",
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: 10,
-  },
-  signUpButton: {
-    fontWeight: "500",
-    color: "#4572D3",
-    textAlign: "center",
-    fontSize: width * 0.045,
-  },
-  loginButton: {
-    fontWeight: "500",
-    color: "#FFFFFF",
-    textAlign: "center",
-    fontSize: width * 0.045,
+  backgroundImage: {
+    width: "100%",
+    height: height * 0.30,
+   
   },
 });
 
